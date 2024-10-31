@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  ya-mirror:
+    build:
+      context: .
+    volumes:
+      - ./liked_ts:/app/liked_ts
