@@ -64,7 +64,7 @@ async def start(client: ClientAsync, bot: ExtBot) -> None:
         else:
             break
 
-    # new_tracks.reverse()
+    new_tracks = sorted(new_tracks, key=lambda t: t.timestamp)
 
     if len(new_tracks):
         logger.info(f"latest ts {LIKED_TS}")
@@ -98,6 +98,7 @@ async def start(client: ClientAsync, bot: ExtBot) -> None:
             performer=performer,
             title=title,
             thumbnail=cover,
+            filename=performer + " " + title,
             chat_id=PRIVATE_CHANNEL_ID,
             audio=track_bytes,
         )
