@@ -74,7 +74,11 @@ async def start(client: ClientAsync, bot: ExtBot) -> None:
         track_info = await track.fetch_track_async()
 
         performer = ", ".join([artist.name for artist in track_info.artists])
-        cover = await track_info.download_cover_bytes_async()
+        cover = None
+        try:
+            cover = await track_info.download_cover_bytes_async()
+        except:
+            logger.error("unable to download cover")
         track_bytes = None
         version = track_info.version and f" ({track_info.version})" or ""
         title = track_info.title + version
