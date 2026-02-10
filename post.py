@@ -30,7 +30,7 @@ def write_liked_ts(ts: str) -> None:
     global LIKED_TS
     LIKED_TS = datetime.fromisoformat(ts)
     with open(FILE_LIKED_TS, "w") as f:
-        f.write(ts)
+        f.write(ts.strip())
 
 
 async def get_latest_liked_ts() -> None:
